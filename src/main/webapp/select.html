@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script type="text/javascript" src="static/util/ajax.js"></script>
+<script type="text/javascript" src="static/js/jquery-1.8.3.min.js"></script>
+<body>
+姓名:<input id="areaName" type="text"><br>
+时间:<input id="createTime" type="text"><br>
+优先级:<input id="priority" type="text"><br>
+请输入查询ID:<input id="ids" type="text"> <input type="button" id="sel" value="查询">
+</body>
+<script type="text/javascript" >
+    $("#sel").click(function () {
+        var data = Myajax("http://localhost:8000/demo/selectOne", JSON.stringify({"areaId": $("#ids").val()}));
+
+        alert("click:"+JSON.stringify(data));
+        $("#areaName").val(data.areaName);
+        $("#createTime").val(data.createTime);
+        $("#priority").val(data.priority);
+
+    });
+
+</script>
+</html>
